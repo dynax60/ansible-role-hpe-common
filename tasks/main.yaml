@@ -1,0 +1,8 @@
+---
+- name: install HPE Public Keys
+  rpm_key:
+    key: "{{ item }}"
+    state: present
+  loop: "{{ hpe_public_keys }}"
+  when: "'RedHat' in ansible_os_family"
+  tags: keys
